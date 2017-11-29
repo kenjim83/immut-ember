@@ -1,0 +1,17 @@
+
+<button {{action "addNewListItem"}}>Add New</button>
+{{#each list as |list-item li-index|}}
+	<section>
+		{{list-item.name}}
+		<ul>
+			{{#each list-item.things as |thing th-index|}}
+				<li>
+					{{!-- {{action "editThing" li-index th-index}}> --}}
+					<input type="text" onchange={{action "editThing" li-index th-index}} value={{thing.name}}>
+					{{!-- {{input action=("editThing" li-index th-index) value=thing.name}} --}}
+				</li>
+			{{/each}}
+		</ul>
+		<button {{action "deleteListItem" li-index}}>Delete</button>
+	</section>
+{{/each}}
