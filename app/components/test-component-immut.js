@@ -27,13 +27,14 @@ export default Ember.Component.extend({
     addNewListItem(){
       this.set('list', this.get('list').push(getDefaultListItem()));
     },
+
     deleteListItem(itemIndex){
       this.set('list', this.get('list').filter((item, index) => (index !== itemIndex)));
-
     },
-    editThing(itemIndex, thingIndex, e){
-      const newText = () => (e.target.value);
-      this.set('list', this.get('list').updateIn([itemIndex, 'things', thingIndex, 'name'], newText));    
+
+    editThing(itemIndex, thingIndex, evt){
+      const newText = evt.target.value;
+      this.set('list', this.get('list').setIn([itemIndex, 'things', thingIndex, 'name'], newText));    
     }
   }
 });
